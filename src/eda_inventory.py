@@ -1,4 +1,4 @@
-"""Milestone 2.1: inventário inicial da base do RodoFauna."""
+"""Inventário inicial da base do RodoFauna."""
 
 from pathlib import Path
 

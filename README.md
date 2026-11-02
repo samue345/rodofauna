@@ -33,4 +33,4 @@ Os experimentos serão executados pelos notebooks e scripts em `notebooks/` e `s
 
 ## Status
 
-Fase 1: organização do projeto e preparação do ambiente.
+Status: organização do projeto e preparação do ambiente.
