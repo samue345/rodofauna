@@ -70,7 +70,6 @@ def grid_counts(df: pd.DataFrame, cell_size: int = 500) -> pd.DataFrame:
         .size()
         .rename(columns={"size": "quantidade"})
         .sort_values("quantidade", ascending=False)
-        .reset_index(drop=True)
     )
 
 
