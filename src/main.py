@@ -1,5 +1,5 @@
 from data_preparation import filter_wildlife, load_raw_data
-from eda_inventory import inventory
+from exploratory_analysis import inventory
 
 
 def main() -> None:
