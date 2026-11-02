@@ -1,10 +1,7 @@
-"""Atributos derivados para os experimentos do projeto."""
-
 import pandas as pd
 
 
 def add_temporal_features(df: pd.DataFrame) -> pd.DataFrame:
-    """Adiciona atributos temporais sem modificar o DataFrame recebido."""
     result = df.copy()
     result["data_dt"] = pd.to_datetime(result["data_dt"], dayfirst=True, errors="coerce")
     result["mes_num"] = result["data_dt"].dt.month
