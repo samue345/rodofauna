@@ -63,10 +63,10 @@ def coordinate_summary(df: pd.DataFrame) -> pd.DataFrame:
 
 def grid_counts(df: pd.DataFrame, cell_size: int = 500) -> pd.DataFrame:
     result = df[["x", "y"]].copy()
-    result["x_celula"] = (result["x"] // cell_size) * cell_size
-    result["y_celula"] = (result["y"] // cell_size) * cell_size
+    result["x_indice"] = result["x"] // cell_size
+    result["y_indice"] = result["y"] // cell_size
     return (
-        result.groupby(["x_celula", "y_celula"], as_index=False)
+        result.groupby(["x_indice", "y_indice"], as_index=False)
         .size()
         .rename(columns={"size": "quantidade"})
         .sort_values("quantidade", ascending=False)
