@@ -26,14 +26,3 @@ def inventory(df: pd.DataFrame) -> pd.DataFrame:
         }
     )
 
-
-if __name__ == "__main__":
-    original = load_data()
-    wildlife = select_wildlife(original)
-
-    print(f"Registros totais: {len(original):,}".replace(",", "."))
-    print(f"Atributos: {original.shape[1]}")
-    print(f"Registros silvestres: {len(wildlife):,}".replace(",", "."))
-    print(f"Registros domésticos: {len(original) - len(wildlife):,}".replace(",", "."))
-    print("\nInventário:")
-    print(inventory(wildlife).to_string(index=False))

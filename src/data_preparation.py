@@ -14,7 +14,3 @@ def load_raw_data(path: Path = RAW_FILE) -> pd.DataFrame:
 def filter_wildlife(df: pd.DataFrame) -> pd.DataFrame:
     return df.loc[df["silvestre_"].eq("silvestre")].copy()
 
-
-if __name__ == "__main__":
-    data = filter_wildlife(load_raw_data())
-    print(f"Registros silvestres: {len(data)}")
