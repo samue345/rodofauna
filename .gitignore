@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# Artefatos gerados
+data/processed/*
+models/*
+figures/*
+reports/generated/*
+*.log
+
+# Exceções: manter diretórios no Git
+!data/processed/.gitkeep
+!models/.gitkeep
+!figures/.gitkeep
+!reports/generated/.gitkeep
