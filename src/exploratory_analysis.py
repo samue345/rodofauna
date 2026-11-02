@@ -72,3 +72,28 @@ def grid_counts(df: pd.DataFrame, cell_size: int = 500) -> pd.DataFrame:
         .sort_values("quantidade", ascending=False)
         .reset_index(drop=True)
     )
+
+
+def plot_counts(summary: pd.DataFrame, category: str, title: str):
+    import matplotlib.pyplot as plt
+
+    fig, ax = plt.subplots(figsize=(9, 4))
+    ax.bar(summary[category].astype(str), summary["quantidade"])
+    ax.set_title(title)
+    ax.set_xlabel(category)
+    ax.set_ylabel("quantidade")
+    ax.tick_params(axis="x", rotation=45)
+    fig.tight_layout()
+    return fig, ax
+
+
+def plot_spatial(df: pd.DataFrame):
+    import matplotlib.pyplot as plt
+
+    fig, ax = plt.subplots(figsize=(8, 6))
+    ax.scatter(df["x"], df["y"], s=5, alpha=0.35)
+    ax.set_title("Distribuição espacial das ocorrências")
+    ax.set_xlabel("x")
+    ax.set_ylabel("y")
+    fig.tight_layout()
+    return fig, ax
