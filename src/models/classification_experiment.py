@@ -1,7 +1,7 @@
-from classification_evaluation import classification_metrics
-from classification_models import build_logistic_regression, build_random_forest
-from classification_pipeline import build_classification_pipeline, prepare_classification_data
-from classification_training import fit_classifier, predict_classifier
+from src.models.classification_evaluation import classification_metrics
+from src.models.classification_models import build_logistic_regression, build_random_forest
+from src.models.classification_pipeline import build_classification_pipeline, prepare_classification_data
+from src.models.classification_training import fit_classifier, predict_classifier
 
 
 def run_baselines():

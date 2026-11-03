@@ -1,4 +1,4 @@
-from classification_experiment import run_baselines
+from src.models.classification_experiment import run_baselines
 
 
 def main():
