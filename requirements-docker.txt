@@ -1,0 +1,7 @@
+numpy
+pandas
+openpyxl
+scikit-learn
+matplotlib
+scipy
+optuna

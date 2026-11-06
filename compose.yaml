@@ -1,0 +1,12 @@
+services:
+  rodofauna:
+    build:
+      context: .
+    image: rodofauna-ml
+    working_dir: /app
+    volumes:
+      - .:/app
+    environment:
+      MPLBACKEND: Agg
+      PYTHONUNBUFFERED: "1"
+    command: python -m src.main

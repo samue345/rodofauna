@@ -35,6 +35,30 @@ pip install -r requirements.txt
 
 Os experimentos serão executados pelos notebooks e scripts em `notebooks/` e `src/`.
 
+## Execução com Docker
+
+Com Docker Desktop instalado, execute na raiz do projeto:
+
+```bash
+docker compose up --build
+```
+
+O container executa `python -m src.main`. Como o projeto é montado no
+container, os resultados continuam disponíveis localmente em
+`reports/generated/`.
+
+Para executar em segundo plano:
+
+```bash
+docker compose up --build -d
+```
+
+Para remover o container:
+
+```bash
+docker compose down
+```
+
 ## Status
 
 Fases 3, 4, 5 e 6 concluídas na primeira versão. A otimização de hiperparâmetros

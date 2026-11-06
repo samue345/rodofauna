@@ -1,0 +1,12 @@
+.git
+.gitignore
+.venv
+venv
+env
+__pycache__
+*.py[cod]
+.ipynb_checkpoints
+data/processed
+models
+figures
+reports/generated
