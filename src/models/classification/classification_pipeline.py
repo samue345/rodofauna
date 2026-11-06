@@ -3,7 +3,7 @@ from sklearn.pipeline import Pipeline
 from src.data.data_preparation import filter_wildlife, load_raw_data
 from src.data.data_split import split_data
 from src.data.model_dataset import classification_dataset
-from src.models.preprocessing import build_preprocessor
+from src.models.classification.preprocessing import build_preprocessor
 
 
 def load_classification_data():

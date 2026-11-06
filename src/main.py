@@ -1,8 +1,12 @@
 from src.analysis.eda_inventory import inventory
 from src.data.data_preparation import filter_wildlife, load_raw_data
+from src.models.classification.classification_run import run_classification_phase
+from src.models.regression.regression_run import main as run_regression
+from src.models.optimization.optimization_run import main as run_optimization
+from src.models.regularization.regularization_run import main as run_regularization
 
 
-def main() -> None:
+def run_inventory() -> None:
     original = load_raw_data()
     wildlife = filter_wildlife(original)
 
@@ -12,6 +16,14 @@ def main() -> None:
     print(f"Registros domésticos: {len(original) - len(wildlife):,}".replace(",", "."))
     print("\nInventário:")
     print(inventory(wildlife).to_string(index=False))
+
+
+def main() -> None:
+    run_inventory()
+    run_classification_phase()
+    run_regression()
+    run_optimization()
+    run_regularization()
 
 
 if __name__ == "__main__":
