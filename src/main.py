@@ -24,6 +24,7 @@ def main() -> None:
     run_regression()
     run_optimization()
     run_regularization()
+    print("\nExecução concluída com sucesso.")
 
 
 if __name__ == "__main__":

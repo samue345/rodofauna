@@ -19,5 +19,17 @@ def main():
 
 def print_results(baseline_results, mlp_result):
     for name, result in baseline_results.items():
-        print(name, "validation", result["validation"], "test", result["test"])
-    print("mlp_regressor", "validation", mlp_result["validation"], "test", mlp_result["test"])
+        print(name)
+        print("validation", format_metrics(result["validation"]))
+        print("test", format_metrics(result["test"]))
+    print("mlp_regressor")
+    print("validation", format_metrics(mlp_result["validation"]))
+    print("test", format_metrics(mlp_result["test"]))
+
+
+def format_metrics(metrics):
+    return {
+        "mae": round(metrics["mae"], 4),
+        "rmse": round(metrics["rmse"], 4),
+        "r2": round(metrics["r2"], 4),
+    }

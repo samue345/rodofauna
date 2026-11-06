@@ -5,5 +5,12 @@ def main():
     results = compare_regularization()
     for name, result in results.items():
         print(name)
-        print("validation", result["validation"])
-        print("test", result["test"])
+        print("validation", format_metrics(result["validation"]))
+        print("test", format_metrics(result["test"]))
+
+
+def format_metrics(metrics):
+    return {
+        "f1_macro": round(metrics["f1_macro"], 4),
+        "accuracy": round(metrics["accuracy"], 4),
+    }

@@ -10,6 +10,7 @@ from src.models.classification.classification_training import predict_classifier
 
 
 def optimize_classification_mlp(n_trials=15):
+    optuna.logging.set_verbosity(optuna.logging.WARNING)
     data = prepare_classification_data()
     X_train, X_validation, X_test, y_train, y_validation, y_test = data
 

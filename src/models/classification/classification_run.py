@@ -30,13 +30,26 @@ def print_results(baseline_results, mlp_result):
     """Print the validation and test metrics for every model."""
     for name, metrics in baseline_results.items():
         print(name)
-        print("validation", metrics["validation"])
-        print("test", metrics["test"])
+        print_metrics(metrics)
 
     print("mlp_classifier")
-    print("validation", mlp_result["validation"])
-    print("test", mlp_result["test"])
+    print_metrics(mlp_result)
     print("epochs", len(mlp_result["history"]["epoch"]))
+
+
+def print_metrics(result):
+    print(
+        "validation",
+        format_metrics(result["validation"], "f1_macro"),
+    )
+    print("test", format_metrics(result["test"], "f1_macro"))
+
+
+def format_metrics(metrics, main_metric):
+    return {
+        main_metric: round(metrics[main_metric], 4),
+        "accuracy": round(metrics["accuracy"], 4),
+    }
 
 
 def build_summary(baseline_results, mlp_result):
