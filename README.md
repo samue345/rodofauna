@@ -8,6 +8,10 @@ Projeto de aprendizado supervisionado para análise e predição de atropelament
 - `data/processed/`: dados tratados e derivados.
 - `notebooks/`: análises exploratórias e experimentos.
 - `src/`: código reutilizável do pipeline.
+  - `src/models/classification/`: classificação tradicional e MLP.
+  - `src/models/regression/`: regressão com modelos tradicionais e MLP.
+  - `src/models/optimization/`: otimização de hiperparâmetros com Optuna.
+  - `src/models/regularization/`: comparação de MLPs com e sem regularização.
 - `models/`: modelos treinados e métricas.
 - `figures/`: gráficos e mapas.
 - `reports/`: relatório técnico e materiais finais.
@@ -33,4 +37,12 @@ Os experimentos serão executados pelos notebooks e scripts em `notebooks/` e `s
 
 ## Status
 
-Status: organização do projeto e preparação do ambiente.
+Fases 3, 4, 5 e 6 concluídas na primeira versão. A otimização de hiperparâmetros
+testa agora de uma a três camadas ocultas e diferentes quantidades de neurônios:
+classificação multiclasse e regressão com MLP são comparadas a modelos
+tradicionais, e o Optuna otimiza a MLP de classificação usando apenas treino e
+validação. A regressão agrega os registros por célula espacial de 500 m e mês,
+usando a quantidade de atropelamentos como variável alvo. A fase 6 compara uma
+MLP sem regularização com uma MLP usando penalização L2. Durante a preparação,
+o campo técnico `OBJECTID` é removido e as duplicatas da exportação GIS são
+eliminadas; o arquivo original em `data/raw/` é preservado.
