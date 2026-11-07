@@ -16,4 +16,5 @@ reports/generated/*
 !data/processed/.gitkeep
 !models/.gitkeep
 !figures/.gitkeep
+!figures/*.png
 !reports/generated/.gitkeep
