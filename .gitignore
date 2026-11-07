@@ -17,4 +17,7 @@ reports/generated/*
 !models/.gitkeep
 !figures/.gitkeep
 !figures/*.png
+!reports/generated/*_training_curves.png
+!reports/generated/classification_phase5_optuna_history.png
+!reports/generated/mlp_regression_predictions.png
 !reports/generated/.gitkeep

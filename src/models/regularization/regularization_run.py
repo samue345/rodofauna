@@ -1,8 +1,8 @@
 from src.models.regularization.classification_regularization import compare_regularization
 
 
-def main():
-    results = compare_regularization()
+def main(best_params=None):
+    results = compare_regularization(best_params=best_params)
     for name, result in results.items():
         print(name)
         print("validation", format_metrics(result["validation"]))

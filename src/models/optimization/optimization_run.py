@@ -16,6 +16,7 @@ def main(n_trials=50):
     save_results(result)
     save_history_plot(result["study"])
     print_results(result)
+    return result
 
 
 def save_results(result):

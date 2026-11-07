@@ -22,8 +22,8 @@ def main() -> None:
     run_inventory()
     run_classification_phase()
     run_regression()
-    run_optimization()
-    run_regularization()
+    optimization_result = run_optimization()
+    run_regularization(best_params=optimization_result["best_params"])
     print("\nExecução concluída com sucesso.")
 
 

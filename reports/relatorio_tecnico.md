@@ -138,20 +138,23 @@ Resultados detalhados:
 
 ## 6. Regularização e overfitting
 
-Foram comparadas duas MLPs com a mesma arquitetura:
+Foram comparadas duas MLPs com a arquitetura encontrada pelo Optuna. A fase de
+regularização também testou diferentes valores de `alpha` usando o mesmo
+treinamento iterativo com `partial_fit`:
 
 - sem regularização: `alpha=0.0`;
-- com regularização L2: `alpha=0.001`.
+- com regularização L2: melhor `alpha` na validação entre os valores testados.
 
 | Modelo | F1 Macro validação | F1 Macro teste | Acurácia teste |
 |---|---:|---:|---:|
-| Sem regularização | 0,3029 | 0,3644 | 0,6732 |
-| Com L2 | 0,3264 | 0,3848 | 0,6822 |
+| Sem regularização | 0,3443 | 0,3715 | 0,6581 |
+| Com L2 (`alpha=0,001`) | 0,3623 | 0,3527 | 0,6506 |
 
-Nesta configuração, a regularização L2 aumentou a acurácia e o F1 Macro no
-conjunto de teste. As
-curvas permitem observar a diferença entre o comportamento no treinamento e na
-validação e devem ser utilizadas para discutir overfitting.
+Nesta configuração, a regularização L2 aumentou o F1 Macro na validação, mas
+não melhorou o resultado no conjunto de teste. Isso mostra a importância de
+selecionar o hiperparâmetro usando apenas a validação e reservar o teste para a
+avaliação final. As curvas permitem observar a diferença entre o comportamento
+no treinamento e na validação e devem ser utilizadas para discutir overfitting.
 
 Resultados e curvas:
 
