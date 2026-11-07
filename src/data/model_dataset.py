@@ -8,7 +8,6 @@ CLASSIFICATION_FEATURES = [
     "mes_num",
     "dia_ano",
     "fim_de_semana",
-    "mes",
     "dia_da_sem",
     "estacao",
     "periodo_chuva",

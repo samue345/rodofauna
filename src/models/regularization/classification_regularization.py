@@ -22,40 +22,60 @@ OUTPUT_DIR = ROOT / "reports" / "generated"
 
 
 def compare_regularization(epochs=100, best_params=None):
+    """Compare one unregularized MLP with several L2 configurations."""
     data = prepare_classification_data()
-    X_train, X_validation, X_test, y_train, y_validation, y_test = data
     base_parameters = build_base_parameters(best_params)
+    without_regularization = train_configuration(
+        alpha=0.0,
+        base_parameters=base_parameters,
+        data=data,
+        epochs=epochs,
+    )
+    l2_candidates = train_l2_candidates(
+        best_params=best_params,
+        base_parameters=base_parameters,
+        data=data,
+        epochs=epochs,
+    )
+    best_l2 = select_best_l2(l2_candidates)
+    best_l2["alpha_candidates"] = validation_scores(l2_candidates)
+
     results = {
-        "without_regularization": train_configuration(
-            alpha=0.0,
-            base_parameters=base_parameters,
-            data=data,
-            epochs=epochs,
-        )
+        "without_regularization": without_regularization,
+        "with_l2_regularization": best_l2,
     }
 
-    candidate_alphas = build_alpha_candidates(best_params)
-    candidates = {
+    save_results(results)
+    return results
+
+
+def train_l2_candidates(best_params, base_parameters, data, epochs):
+    """Train one MLP for each candidate L2 strength."""
+    return {
         alpha: train_configuration(
             alpha=alpha,
             base_parameters=base_parameters,
             data=data,
             epochs=epochs,
         )
-        for alpha in candidate_alphas
+        for alpha in build_alpha_candidates(best_params)
     }
-    best_alpha = max(
-        candidates,
-        key=lambda alpha: candidates[alpha]["validation"]["f1_macro"],
+
+
+def select_best_l2(candidates):
+    """Select the L2 result with the highest validation F1 Macro."""
+    return max(
+        candidates.values(),
+        key=lambda result: result["validation"]["f1_macro"],
     )
-    results["with_l2_regularization"] = candidates[best_alpha]
-    results["with_l2_regularization"]["alpha_candidates"] = {
+
+
+def validation_scores(candidates):
+    """Return the validation F1 for every tested alpha."""
+    return {
         str(alpha): result["validation"]["f1_macro"]
         for alpha, result in candidates.items()
     }
-
-    save_results(results)
-    return results
 
 
 def train_configuration(alpha, base_parameters, data, epochs):

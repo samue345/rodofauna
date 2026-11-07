@@ -75,9 +75,9 @@ Os modelos foram comparados usando a mesma divisão dos dados:
 
 | Modelo | F1 Macro validação | F1 Macro teste | Acurácia teste |
 |---|---:|---:|---:|
-| Regressão Logística | 0,2347 | 0,2281 | 0,6747 |
-| Random Forest | 0,4243 | 0,4269 | 0,5512 |
-| MLP | 0,3042 | 0,3497 | 0,6672 |
+| Regressão Logística | 0,2024 | 0,2075 | 0,6822 |
+| Random Forest | 0,4253 | 0,4379 | 0,5678 |
+| MLP | 0,3219 | 0,3499 | 0,6913 |
 
 O Random Forest obteve o maior F1 Macro no teste. A acurácia da MLP foi maior
 que seu F1 Macro porque a classe aves é dominante. Por isso, a acurácia
@@ -119,13 +119,13 @@ Foram executados 50 trials. A melhor configuração foi:
 ```text
 camadas ocultas: 32 e 64 neurônios
 ativação: relu
-alpha: 0,000012
-learning rate: 0,001950
+alpha: 0,000271
+learning rate: 0,001300
 batch size: 32
 ```
 
-O melhor F1 Macro de validação foi 0,3212, enquanto o F1 Macro no teste foi
-0,3363. A busca ampliada mostrou que a arquitetura inicial `(64, 32)` não é
+O melhor F1 Macro de validação foi 0,3059, enquanto o F1 Macro no teste foi
+0,3477. A busca ampliada mostrou que a arquitetura inicial `(64, 32)` não é
 necessariamente a melhor: neste experimento, `(32, 64)` obteve melhor resultado
 na validação. Ainda assim, a seleção deve ser interpretada com cautela porque
 o teste permanece reservado para a avaliação final.
@@ -147,14 +147,15 @@ treinamento iterativo com `partial_fit`:
 
 | Modelo | F1 Macro validação | F1 Macro teste | Acurácia teste |
 |---|---:|---:|---:|
-| Sem regularização | 0,3443 | 0,3715 | 0,6581 |
-| Com L2 (`alpha=0,001`) | 0,3623 | 0,3527 | 0,6506 |
+| Sem regularização | 0,3388 | 0,3831 | 0,6807 |
+| Com L2 (`alpha=0,000271`) | 0,3468 | 0,3853 | 0,6837 |
 
 Nesta configuração, a regularização L2 aumentou o F1 Macro na validação, mas
-não melhorou o resultado no conjunto de teste. Isso mostra a importância de
-selecionar o hiperparâmetro usando apenas a validação e reservar o teste para a
-avaliação final. As curvas permitem observar a diferença entre o comportamento
-no treinamento e na validação e devem ser utilizadas para discutir overfitting.
+também apresentou uma pequena melhora no conjunto de teste. Isso mostra a
+importância de selecionar o hiperparâmetro usando apenas a validação e reservar
+o teste para a avaliação final. As curvas permitem observar a diferença entre
+o comportamento no treinamento e na validação e devem ser utilizadas para
+discutir overfitting.
 
 Resultados e curvas:
 
